@@ -12,22 +12,14 @@ app.use(express.static('frontend'));
 var names={}
 io.on('connection', (socket) => {
     console.log('A user connected');
-   /* 
-    console.log(socket);
-    //
-    socket.on('user connected', (name) => {
-      console.log('message: ' + name+socket.id);
-      names[socket.id]=name
-      console.log(names[socket.id])
-  });
-    // Handle events from the client
-    socket.on('chat message', (msg) => {
-        console.log('message: ' + msg);
-        console.log("name "+names[socket.id])
-        // Broadcast the message to all connected clients
+    /*socket.on('user connected', (name) => {
+        console.log('message: ' + name+socket.id);
+         names[socket.id]=name
+       // console.log(names[socket.id])
+    });*/
+    /*socket.on('chat message', (msg) => { 
         io.emit('chat message', { name: names[socket.id], message: msg });
     });
-   
     // Handle disconnection
     socket.on('disconnect', () => {
         console.log('User disconnected');
