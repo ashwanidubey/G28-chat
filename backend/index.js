@@ -24,21 +24,24 @@ io.on('connection', (socket) => {
    socket.on('chat message', (msg) => { 
     console.log(msg)
     console.log("by:",  socket.id)
-    let from=names[socket.id]
-    if(from=='A')
+    let from=names[socket.id];
+    
+    let to=ids[msg.to]
+    if(from==='A')       
     {
         io.to(ids['B']).emit("chat message",{ 
             name: names[socket.id], message: msg })
     }
-    else if(from=='B')
+    else if(from==='B')       
     {
-        io.to(ids['C']).emit("chat message",{
-             name: names[socket.id], message: msg })
+        io.to(ids['C']).emit("chat message",{ 
+            name: names[socket.id], message: msg })
     }
     else{
         io.to(ids['A']).emit("chat message",{ 
-            name: names[socket.id], message: msg }) 
+            name: names[socket.id], message: msg })
     }
+   
     
    });
    socket.on('disconnect', () => {
